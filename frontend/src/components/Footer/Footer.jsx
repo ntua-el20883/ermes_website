@@ -14,13 +14,16 @@ const Footer = () => {
             Engineering students who shared a vision: to create laptops that
             could keep up with their demanding academic and professional needs.
             Frustrated by the lack of ultra-fast, portable devices in the
-            market, they set out to build their own solutions. What started as a
-            small project has grown into a company dedicated to redefining speed
-            and portability. Today, Ermes designs cutting-edge laptops and
+            market, they set out to build their own solutions. 
+          </p>
+          <p>
+            What started as a small project has grown into a company 
+            dedicated to redefining speed and portability.
+            Today, Ermes designs cutting-edge laptops and
             desktops for professionals, gamers, and creators, delivering
-            seamless performance to keep you ahead of the curve. We innovate
-            with you in mind, blending sleek design, powerful technology, and a
-            commitment to excellence in every product.
+            seamless performance to keep you ahead of the curve.
+            We innovate with you in mind, blending sleek design,
+            powerful technology, and a commitment to excellence in every product.
           </p>
           <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="" />
@@ -33,7 +36,6 @@ const Footer = () => {
           <ul>
             <li>Home</li>
             <li>About Us</li>
-            <li>Delivery</li>
             <li>Privacy Policy</li>
           </ul>
         </div>
@@ -41,7 +43,7 @@ const Footer = () => {
           <h2>GET IN TOUCH</h2>
           <ul>
             <li>+0-131-313-1313</li>
-            <li>contactus@ermes.com</li>
+            <li>ermesntua@gmail.com</li>
           </ul>
         </div>
       </div>

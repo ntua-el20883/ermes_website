@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./Header.css";
 
 const Header = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleButtonClick = () => {
+    navigate("/products"); // Redirect to the Products page
+  };
+
   return (
     <div className="header">
       <div className="header-contents">
@@ -12,7 +19,7 @@ const Header = () => {
           portability, Ermes products deliver seamless performance to keep you
           ahead of the curve, whether for work or play.
         </p>
-        <button>View Our Products</button>
+        <button onClick={handleButtonClick}>View Our Products</button>
       </div>
     </div>
   );

@@ -1,34 +1,46 @@
-import React, { useContext, useState } from 'react'
-import './Navbar.css'
-import {assets} from '../../assets/assets'
-import { Link } from 'react-router-dom';
-import { StoreContext } from '../../context/StoreContext';
+import React, { useState } from 'react';
+import './Navbar.css';
+import { assets } from '../../assets/assets';
+import { Link } from 'react-router-dom';  // Ensure you're using 'Link' from react-router-dom
 
-const Navbar = ({setShowLogin}) => {
+const Navbar = () => {
+  const [menu, setMenu] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Track if menu is open
 
-    const [menu,setMenu] = useState("home");
+  const handleScrollToStores = () => {
+    // Scroll to the element with id "sales-office"
+    const salesOfficeSection = document.getElementById('sales-office');
+    if (salesOfficeSection) {
+      salesOfficeSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-    const {getTotalCartAmount} = useContext(StoreContext)
+  // Toggle menu visibility on mobile
+  const toggleMenu = () => {
+    setIsMenuOpen(prevState => !prevState);
+  };
 
   return (
     <div className='navbar'>
-        <Link to='/'><img src={assets.logo} alt="" className="logo" /></Link>
-        <ul className="navbar-menu">
-            <Link to='/' onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>home</Link>
-            <a href='#explore-menu' onClick={()=>setMenu("menu")} className={menu==="menu"?"active":""}>menu</a>
-            <a href='#app-download' onClick={()=>setMenu("mobile-app")} className={menu==="mobile-app"?"active":""}>mobile-app</a>
-            <a href='#footer' onClick={()=>setMenu("contact us")} className={menu==="contact us"?"active":""}>contact us</a>
-        </ul>
-        <div className="navbar-right">
-            <img src={assets.search_icon} alt="" />
-            <div className="navbar-search-icon">
-                <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
-                <div className={getTotalCartAmount()===0?"":"dot"}></div>
-            </div>
-            <button onClick={()=>setShowLogin(true)}>sign in</button>
-        </div>
-    </div>
-  )
-}
+      {/* Logo */}
+      <Link to='/'><img src={assets.logo} alt="Logo" className="logo" /></Link>
 
-export default Navbar
+      {/* Hamburger Button for Mobile */}
+      <button className="hamburger" onClick={toggleMenu}>
+        ☰
+      </button>
+
+      {/* Navigation Menu */}
+      <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
+        <Link to='/' onClick={() => setMenu('home')} className={menu === 'home' ? 'active' : ''}>home</Link>
+        <a href="#" onClick={handleScrollToStores} className={menu === 'stores' ? 'active' : ''}>stores</a>
+        <Link to='/who-we-are' onClick={() => setMenu('who-we-are')} className={menu === 'who-we-are' ? 'active' : ''}>who we are</Link>
+        <Link to="/products" onClick={() => setMenu('products')} className={menu === 'products' ? 'active' : ''}>products</Link>
+        <Link to="/join-us">join us</Link>
+        <a href='#footer' onClick={() => setMenu('contact us')} className={menu === 'contact us' ? 'active' : ''}>contact us</a>
+      </ul>
+    </div>
+  );
+};
+
+export default Navbar;
